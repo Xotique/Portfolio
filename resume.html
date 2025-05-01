@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mfoniso Michael Eko - Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card-bg: #161b22;
+      --text: #c9d1d9;
+      --muted: #8b949e;
+      --accent: #2f81f7;
+      --border: #30363d;
+      --link: #58a6ff;
+      --heading: #e6edf3;
+      --hover-bg: #1f2937;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      margin-left: 1.5rem;
+      color: var(--link);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--heading);
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--muted);
+    }
+
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 3rem 2rem;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+      color: var(--heading);
+    }
+
+    .projects, .timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 6px;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      background: var(--hover-bg);
+    }
+
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      aspect-ratio: 16/9;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .timeline-date {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 6px;
+    }
+
+    .contact-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-info a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      margin: 0;
+    }
+
+    .social-links {
+      display: inline-flex;
+      gap: 1rem;
+      margin: 0;
+    }
+
+    .divider {
+      color: var(--muted);
+      margin: 0 0.1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: transparent;
+      color: var(--link);
+      border: 1px solid var(--link);
+      padding: 8px 16px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      display: none;
+    }
+
+    .back-to-top:hover {
+      background: var(--link);
+      color: var(--bg);
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav a {
+        margin: 0.5rem 0 0 0;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+
+    .media-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .media-item {
+      flex: 1;
+      min-width: 300px;
+      max-width: calc(33.333% - 1rem);
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      cursor: pointer;
+    }
+
+    .media-item img, 
+    .media-item video {
+      width: 100%;
+      height: 100%;
+      border-radius: 6px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .media-item:hover img,
+    .media-item:hover video {
+      transform: scale(1.05);
+    }
+
+    /* Modal styles for full image view */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      cursor: pointer;
+    }
+
+    .modal img,
+    .modal video {
+      max-width: 90%;
+      max-height: 90vh;
+      margin: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      object-fit: contain;
+      border-radius: 6px;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: var(--text);
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .container {
+      padding: 0 1.1rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .social-links a {
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+      color: var(--accent);
+    }
+
+    .social-links i {
+      font-size: 1.2rem;
+    }
+
+    .contact-card a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    .contact-card a:hover {
+      text-decoration: underline;
+    }
+
+    .projects .card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .projects .card .media-gallery {
+      margin: 0 0 1rem 0;
+    }
+
+    .projects .card .media-item {
+      width: 100%;
+      max-width: 100%;
+      margin-bottom: 0;
+    }
+
+    .projects .card h3 {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+      color: var(--heading);
+    }
+
+    .projects .card p {
+      margin: 0.5rem 0;
+      line-height: 1.5;
+    }
+
+    .projects .card .project-links {
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .projects .card .project-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--link);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .projects .card .project-links a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .projects .card .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.5rem 0;
+    }
+
+    .projects .card .tech-tag {
+      font-size: 0.85rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      background: var(--bg);
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    .about-container {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .profile-image-container {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 1rem;
+    }
+
+    .profile-image {
+      max-height: 400px;
+      width: auto;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .about-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .profile-image {
+        max-height: 300px;
+      }
+
+      .profile-image-container {
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    .matrix-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.1;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <canvas class="matrix-bg" id="matrix"></canvas>
+  <header>
+    <nav>
+      <div><strong>My Portfolio</strong></div>
+      <div>
+        <a href="#about">About</a>
+        <a href="#key-projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Hi, I'm Mfoniso Michael Eko 👋</h1>
+    <p>Computer Science Student | Game Developer | Full-Stack Enthusiast</p>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="card">
+      <div class="about-container">
+        <div class="profile-image-container">
+          <img src="profile3.jpg" alt="Mfoniso Michael Eko" class="profile-image">
+        </div>
+        <div class="about-content">
+          <p>
+            I'm a 22-year-old Computer Science student at Shenyang Aerospace University in China. 
+            I specialize in game development (Unreal Engine), web apps (HTML/CSS/JS), and AI-powered projects (Python). 
+            My passion lies in solving real-world problems through technology and creating engaging digital experiences.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="summary">
+    <h2>Professional Summary</h2>
+    <div class="card">
+      <p>
+        Dedicated third-year Computer Science student at Shenyang Aerospace University with a focus on software development, game design, and practical applications of technology. Proven ability to deliver innovative solutions through Python, Unreal Engine, and web technologies. Adept at solo and team-based development, with a portfolio of published games and impactful personal projects. Seeking internships or entry-level roles to expand expertise in full-stack development and AI applications.
+      </p>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2022 – 2026 (Expected)</div>
+        <h3>Bachelor of Science in Computer Science</h3>
+        <p>Shenyang Aerospace University, Shenyang, Liaoning, China</p>
+        <p><strong>Relevant Coursework:</strong> Data Structures, Algorithms, Machine Learning, Web Development</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Technical Skills</h2>
+    <div class="card">
+      <p>
+        <strong>Languages:</strong> Python, JavaScript, HTML/CSS, SQL<br/>
+        <strong>Frameworks/Tools:</strong> Unreal Engine (UEFN), YOLOv5, Git, Node.js, React (basic-to-intermediate)<br/>
+        <strong>Competencies:</strong> Game Development, Object Detection, Web/Mobile App Development<br/>
+        <strong>Soft Skills:</strong> Team Collaboration, Problem-Solving, Project Management
+      </p>
+    </div>
+  </section>
+
+  <section id="key-projects">
+    <h2>Key Projects & Experience</h2>
+    <div class="projects">
+      <div class="card">
+        <h3>Self-Driving Car with Obstacle Detection & Path Tracing</h3>
+        <p><em>Gold Award Winner – Liaoning International Students Internet+ Competition (Sept 2023 – Dec 2023)</em></p>
+        
+        <div class="media-gallery">
+          <div class="media-item">
+            <video autoplay muted loop>
+              <source src="robot.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="media-item">
+            <img src="awardcollection.jpg" alt="Project Landscape">
+          </div>
+          <div class="media-item">
+            <img src="gold.jpg" alt="Price Calculator">
+          </div>
+        </div>
+        <div class="container">
+          <ul>
+            <li>Built a self-driving car prototype using <strong>Python</strong> and <strong>YOLOv5</strong> for real-time object detection.</li>
+            <li>Developed path-tracing logic using OpenCV to guide the car's movement.</li>
+            <li>Collaborated with a team to integrate hardware sensors and optimize model performance.</li>
+            <li>Result: Won Gold Award among 50+ teams; project showcased at the university's innovation fair.</li>
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <section id="fortnite-maps">
+    <h2>Fortnite Creative Maps</h2>
+    <div class="projects">
+      <div class="card">
+        <div class="media-gallery">
+          <div class="media-item">
+            <img src="/landscape_comp.jpeg" alt="Dirt Dunes Derby">
+          </div>
+        </div>
+        <h3>Dirt Dunes Derby</h3>
+        <p>Terrain-based dirt bike racing game.</p>
+        <p>Code: <a href="https://www.fortnite.com/@logikfoxx/1710-1299-1846?lang=en-US" target="_blank">1710-1299-1846</a></p>
+      </div>
+
+      <div class="card">
+        <div class="media-gallery">
+          <div class="media-item">
+            <img src="/lobby.jpeg" alt="1v1 Build Fight">
+          </div>
+        </div>
+        <h3>1v1 Build Fight Island</h3>
+        <p>Fast-Paced custom battle arena for 2 Players.</p>
+        <p>Code: <a href="https://www.fortnite.com/@logikfoxx/3651-4344-3668?lang=en-US" target="_blank">3651-4344-3668</a></p>
+      </div>
+
+      <div class="card">
+        <div class="media-gallery">
+          <div class="media-item">
+            <img src="/lobby2.jpeg" alt="OG BOXFIGHTS">
+          </div>
+        </div>
+        <h3>OG BOXFIGHTS [9 Players]</h3>
+        <p>Multiplayer BoxFights Map remeniscence of the old days.</p>
+        <p>Code: <a href="https://www.fortnite.com/@logikfoxx/1667-3414-3355?lang=en-US" target="_blank">1667-3414-3355</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="personal-projects">
+    <h2>Personal Projects</h2>
+    <div class="projects">
+      <div class="card">
+        <div class="media-gallery">
+          <div class="media-item">
+            <img src="/PriceCalculator.png" alt="Currency Converter">
+          </div>
+        </div>
+        <h3>Currency Converter</h3>
+        <div class="project-tech">
+          <span class="tech-tag">Html</span>
+          <span class="tech-tag">Css</span>
+          <span class="tech-tag">JavaScript</span>
+        </div>
+        <p>A desktop Web-Application that converts between Nigerian Naira (₦) and Chinese Yuan (¥), helping students and traders with cross-border shopping calculations.</p>
+        <div class="project-links">
+          <a href="https://github.com/Xotique/CurrencyCalculatorNG" target="_blank">
+            <i class="fab fa-github"></i>
+            View on GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="media-gallery">
+          <div class="media-item">
+            <video controls autoplay muted>
+              <source src="notesapp.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <h3>React Notes App</h3>
+        <div class="project-tech">
+          <span class="tech-tag">React</span>
+          <span class="tech-tag">TypeScript</span>
+          <span class="tech-tag">Expo</span>
+        </div>
+        <p>A mobile-optimized note-taking application built with React, featuring real-time editing, local storage persistence, and a clean, minimalist interface.</p>
+        <div class="project-links">
+          <a href="https://github.com/Xotique/Notes-App" target="_blank">
+            <i class="fab fa-github"></i>
+            View on GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="achievements">
+    <h2>Achievements & Awards</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">January 2024</div>
+        <h3>Gold Award Winner</h3>
+        <p>Liaoning International Students Internet+ Competition</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">July 2023 - September 2024</div>
+        <h3>3 Published Games on Fortnite’s UEFN Marketplace</h3>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">August 2022</div>
+        <h3>Admission</h3>
+        <p>Shenyang Aerospace University (2021–2022 Academic Year)</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="certificates">
+    <h2>Awards and Certificates Gallery</h2>
+    <div class="media-gallery">
+      <!-- Certificate images will be added here -->
+      <div class="media-item">
+        <img src="awardcollection.jpg" alt="Certificate placeholder">
+      </div>
+      <div class="media-item">
+        <img src="certificate.jpg" alt="Certificate placeholder">
+      </div>
+      <div class="media-item">
+        <img src="award2.jpg" alt="Certificate placeholder">
+      </div>
+    </div>
+  </section>
+
+  <section id="additional-info">
+    <h2>Additional Information</h2>
+    <div class="card">
+      <p>
+        <strong>Languages:</strong> English (Fluent), Mandarin (Basic), Pidgin (Fluent).<br/>
+        <strong>Certifications:</strong> 沈阳航空航天大学作品《“爱”的企业人文关怀-AlEmpower-ed Environment Situation Sensing System(Al-E2S3)》在2024年(第17届)中国大学生计算机设计大赛中荣获<br/>
+        <strong>Interests:</strong> Competitive Coding, Game Design, Open Source Contributions.
+      </p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-card">
+      <div class="contact-info">
+        <strong>Email:</strong><a href="mailto:ekomfoniso@gmail.com">ekomfoniso@gmail.com</a>
+        <span class="divider">|</span>
+        <strong>GitHub:</strong><a href="https://github.com/Xotique" target="_blank">github.com/Xotique</a>
+        <span class="divider">|</span>
+        <strong>
+          <a href="https://www.instagram.com/mfonisoeko/" target="_blank">
+            <i class="fab fa-instagram" style="color: #E1306C;"></i>
+            <span>Instagram</span>
+          </a><span class="divider">|</span>
+          <a href="https://www.x.com/FerralFoxx" target="_blank">
+            <i class="fab fa-twitter" style="color: #1DA1F2;"></i>
+            <span>Twitter/X</span>
+          </a><span class="divider"> |</span>
+          <a href="https://www.twitch.tv/logikfoxx" target="_blank">
+            <i class="fab fa-twitch" style="color: #9146FF;"></i>
+            <span>Twitch</span>
+          </a><span class="divider"> |</span>
+          <a href="https://www.youtube.com/@LogikFoxx" target="_blank">
+            <i class="fab fa-youtube" style="color: #FF0000;"></i>
+            <span>YouTube</span>
+          </a>
+        </strong>
+        
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Mfoniso Michael Eko. Hosted on GitHub Pages.
+  </footer>
+
+  <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑ Top</button>
+
+  <div id="imageModal" class="modal">
+    <span class="close-modal">&times;</span>
+    <div id="modalContent"></div>
+  </div>
+
+  <script>
+    // Modal functionality
+    const modal = document.getElementById('imageModal');
+    const modalContent = document.getElementById('modalContent');
+    const closeModal = document.getElementsByClassName('close-modal')[0];
+
+    // Function to show modal
+    function showModal(element) {
+      modal.style.display = 'block';
+      modalContent.innerHTML = ''; // Clear existing content
+
+      if (element.tagName.toLowerCase() === 'video') {
+        // Create new video element for modal
+        const videoElement = document.createElement('video');
+        videoElement.src = element.querySelector('source').src;
+        videoElement.controls = true;
+        videoElement.autoplay = true;
+        videoElement.style.maxWidth = '90%';
+        videoElement.style.maxHeight = '90vh';
+        modalContent.appendChild(videoElement);
+      } else {
+        // Create new image element for modal
+        const imgElement = document.createElement('img');
+        imgElement.src = element.src;
+        imgElement.alt = 'Expanded view';
+        imgElement.style.maxWidth = '90%';
+        imgElement.style.maxHeight = '90vh';
+        modalContent.appendChild(imgElement);
+      }
+    }
+
+    // Add click handlers to all media items
+    document.addEventListener('DOMContentLoaded', function() {
+      const mediaItems = document.querySelectorAll('.media-item img, .media-item video');
+      mediaItems.forEach(item => {
+        item.addEventListener('click', function() {
+          showModal(this);
+        });
+      });
+    });
+
+    // Close modal when clicking X or outside
+    closeModal.onclick = function() {
+      modal.style.display = 'none';
+      modalContent.innerHTML = ''; // Clear content when closing
+    }
+
+    modal.onclick = function(event) {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+        modalContent.innerHTML = ''; // Clear content when closing
+      }
+    }
+
+    // Show/hide back to top button
+    window.onscroll = function() {
+      const backToTop = document.querySelector('.back-to-top');
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        backToTop.style.display = 'block';
+      } else {
+        backToTop.style.display = 'none';
+      }
+    };
+
+    // Matrix background animation
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+
+    // Set canvas size
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Characters to use (mix of letters, numbers, and symbols)
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()';
+    const charSize = 14;
+    const columns = canvas.width / charSize;
+    const drops = [];
+
+    // Initialize drops
+    for (let i = 0; i < columns; i++) {
+      drops[i] = Math.random() * -canvas.height;
+    }
+
+    // Drawing function
+    function draw() {
+      // Semi-transparent black to create fade effect
+      ctx.fillStyle = 'rgba(13, 17, 23, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#2f81f7'; // GitHub theme blue color
+      ctx.font = charSize + 'px monospace';
+
+      // Loop over drops
+      for (let i = 0; i < drops.length; i++) {
+        // Random character
+        const char = chars[Math.floor(Math.random() * chars.length)];
+        
+        // Draw character
+        ctx.fillText(char, i * charSize, drops[i]);
+
+        // Reset drop or move it down
+        if (drops[i] > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        
+        // Move drop down at random speed
+        drops[i] += Math.random() * 2 + 1;
+      }
+    }
+
+    // Animation loop
+    function animate() {
+      draw();
+      requestAnimationFrame(animate);
+    }
+
+    // Start animation
+    animate();
+  </script>
+</body>
+</html>
