@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Mfoniso Michael Eko - Computer Science Student, Game Developer, and Full-Stack Developer Portfolio. Specializing in Unreal Engine, Web Development, and AI Projects.">
+  <meta name="keywords" content="Mfoniso Michael Eko, Computer Science, Game Development, Unreal Engine, Web Development, Portfolio, Fortnite Creative, UEFN">
+  <meta name="author" content="Mfoniso Michael Eko">
+  <meta property="og:title" content="Mfoniso Michael Eko - Portfolio">
+  <meta property="og:description" content="Computer Science Student specializing in Game Development, Web Apps, and AI-powered projects">
+  <meta property="og:type" content="website">
   <title>Mfoniso Michael Eko - Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -435,6 +441,59 @@
       .profile-image-container {
         margin-bottom: 1.5rem;
       }
+
+      .media-gallery {
+        flex-direction: column;
+      }
+
+      .media-item {
+        min-width: 100%;
+        max-width: 100%;
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        margin-bottom: 1rem;
+      }
+
+      .contact-info {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .contact-info .divider {
+        display: none;
+      }
+
+      .contact-info a {
+        margin: 0.5rem 0;
+      }
+
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      section {
+        padding: 2rem 1rem;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .media-gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .media-item {
+        min-width: calc(50% - 0.5rem);
+        max-width: calc(50% - 0.5rem);
+      }
     }
 
     .matrix-bg {
@@ -523,7 +582,7 @@
     <div class="projects">
       <div class="card">
         <h3>Self-Driving Car with Obstacle Detection & Path Tracing</h3>
-        <p><em>Gold Award Winner – Liaoning International Students Internet+ Competition (Sept 2023 – Dec 2023)</em></p>
+        <p><em>Gold Award Winner – Liaoning International Students Internet+ Competition (January 2024)</em></p>
         
         <div class="media-gallery">
           <div class="media-item">
@@ -558,7 +617,7 @@
       <div class="card">
         <div class="media-gallery">
           <div class="media-item">
-            <img src="/landscape_comp.jpeg" alt="Dirt Dunes Derby">
+            <img src="landscape_comp.jpeg" alt="Dirt Dunes Derby">
           </div>
         </div>
         <h3>Dirt Dunes Derby</h3>
@@ -569,7 +628,7 @@
       <div class="card">
         <div class="media-gallery">
           <div class="media-item">
-            <img src="/lobby.jpeg" alt="1v1 Build Fight">
+            <img src="lobby.jpeg" alt="1v1 Build Fight">
           </div>
         </div>
         <h3>1v1 Build Fight Island</h3>
@@ -580,7 +639,7 @@
       <div class="card">
         <div class="media-gallery">
           <div class="media-item">
-            <img src="/lobby2.jpeg" alt="OG BOXFIGHTS">
+            <img src="lobby2.jpeg" alt="OG BOXFIGHTS">
           </div>
         </div>
         <h3>OG BOXFIGHTS [9 Players]</h3>
@@ -596,7 +655,7 @@
       <div class="card">
         <div class="media-gallery">
           <div class="media-item">
-            <img src="/PriceCalculator.png" alt="Currency Converter">
+            <img src="PriceCalculator.png" alt="Currency Converter">
           </div>
         </div>
         <h3>Currency Converter</h3>
@@ -649,8 +708,8 @@
         <p>Liaoning International Students Internet+ Competition</p>
       </div>
       <div class="timeline-item">
-        <div class="timeline-date">July 2023 - September 2024</div>
-        <h3>3 Published Games on Fortnite’s UEFN Marketplace</h3>
+        <div class="timeline-date">July 2023 - Present</div>
+        <h3>3 Published Games on Fortnite's UEFN Marketplace</h3>
       </div>
       <div class="timeline-item">
         <div class="timeline-date">August 2022</div>
@@ -679,7 +738,7 @@
   <section id="additional-info">
     <h2>Additional Information</h2>
     <div class="card">
-      <p>
+      <p></p>
         <strong>Languages:</strong> English (Fluent), Mandarin (Basic), Pidgin (Fluent).<br/>
         <strong>Certifications:</strong> 沈阳航空航天大学作品《“爱”的企业人文关怀-AlEmpower-ed Environment Situation Sensing System(Al-E2S3)》在2024年(第17届)中国大学生计算机设计大赛中荣获<br/>
         <strong>Interests:</strong> Competitive Coding, Game Design, Open Source Contributions.
@@ -720,7 +779,7 @@
   </section>
 
   <footer>
-    © 2025 Mfoniso Michael Eko. Hosted on GitHub Pages.
+    © <script>document.write(new Date().getFullYear())</script> Mfoniso Michael Eko. Hosted on GitHub Pages.
   </footer>
 
   <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑ Top</button>
@@ -852,6 +911,23 @@
 
     // Start animation
     animate();
+
+    // Device detection
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    
+    // Adjust video autoplay on mobile
+    if (isMobile) {
+      document.querySelectorAll('video').forEach(video => {
+        video.setAttribute('playsinline', '');
+        video.setAttribute('preload', 'none');
+      });
+    }
+
+    // Adjust matrix animation for mobile
+    if (isMobile) {
+      canvas.style.opacity = '0.05';
+      charSize = 10;
+    }
   </script>
 </body>
 </html>
